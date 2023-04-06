@@ -1,0 +1,104 @@
+nes (41 sloc)  1.69 KB
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user</title>
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.4/dist/L.Control.Locate.min.css" />
+
+    <style>
+        body {
+            margin: 10;
+            padding: 10;
+        }
+
+        #map {
+            width: 100%;
+            height: 90vh;
+        }
+    </style>
+  
+</head>
+
+<body>
+    <nav>
+        <div class="menu">
+          <a href="map.html">search here</a>
+        </div>  
+      </nav>
+    <div id="map"></div>
+    <button >
+        <div class ="cordinates">
+        </div>
+        </button>
+        
+</body>
+</html>
+
+<!-- leaflet js  -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    // Map initialization 
+    var map = L.map('map').setView([28.3949, 84.1240], 8);
+
+    //osm layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    osm.addTo(map);
+    L.marker([12.866334, 74.924229]).addTo(map)
+    .bindPopup('sahyadri college of engineering')
+    .openPopup();
+    L.marker([12.866926, 74.919585]).addTo(map)
+    .bindPopup('Bonda fActory by Naturals ')
+    .openPopup();
+    L.marker([12.865815, 74.924584]).addTo(map)
+    .bindPopup('SAHYADRI FOOD COURT')
+    .openPopup();
+    L.marker([12.868373, 74.925556]).addTo(map)
+    .bindPopup('TANDROOR KITCHEN')
+    .openPopup();
+    L.marker([12.868213, 74.916064]).addTo(map)
+    .bindPopup('SHETTY LUNCH HOME ADYAR ')
+    .openPopup();
+    L.marker([12.866023, 74.910384]).addTo(map)
+    .bindPopup('Café Kart (Go Karting,Restaurant')
+    .openPopup();
+    L.marker([12.871288,74.895540]).addTo(map)
+    .bindPopup(' Royal Dine Family Restaurant')
+    .openPopup();
+    L.marker([13.345187,75.011116]).addTo(map)
+    .bindPopup('SAHYADRI FOOD COURT')
+    .openPopup();
+//search box
+L.Control.geocoder().addTo(map);
+    L.control.locate().addTo(map);
+    //scale of the map
+    L.control.scale({position:'topright'}).addTo(map)
+
+//map coordinates
+
+map.on('mousemove',function(e){
+    console.log(e)
+    $('.cordinates').html(`Lat:${e.latlng.lat}  lng: ${e.latlng.lng}`)
+})
+
+</script>
